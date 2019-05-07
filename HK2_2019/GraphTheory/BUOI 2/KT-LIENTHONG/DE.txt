@@ -1,0 +1,42 @@
+﻿Hãy hoàn thiện chương trình sau để kiểm tra tính liên thông của đồ thị vô hướng.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+typedef struct {
+    int A[100][100];
+    int n;
+} Graph;
+void init_graph(Graph* G, int n) {
+    G->n = n;
+    memset(G->A, 0, sizeof(G->A));
+}
+
+/*===BAT DAU==*/
+Viết chương trình của bạn ở đây và copy phần này dán vào ô trả lời.
+/*===KET THUC==*/
+
+int main() {
+    Graph G;
+    int m, n, e, i;
+    freopen("dt.txt", "r", stdin);
+    scanf("%d%d", &n, &m);
+    init_graph(&G, n);
+    for (e = 1; e <= m; e++) {
+        int u, v;
+        scanf("%d%d", &u, &v);
+        G.A[u][v] = G.A[v][u] = 1;
+    }
+    
+    printf("%d\n", connected(&G));
+    return 0;
+}
+
+Chú ý:
+
+    Bạn cần viết hàm int connected(Graph* G) để kiểm tra tính liên thông của đồ thị G. Hàm này trả về 1 nếu đồ thị liên thông và 0 nếu đồ thị không liên thông.
+    Bạn có thể khai báo thêm các biến hoặc hàm
+    Để chạy thử chương trình, bạn cần có một tập tin dt.txt chứa đồ thị cần kiểm tra.
